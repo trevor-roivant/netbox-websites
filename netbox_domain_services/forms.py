@@ -1,5 +1,5 @@
 from netbox.forms import NetBoxModelForm
-from .models import Website, Registrar, Hoster
+from .models import Website, Registrar, Hoster, Designer, Developer
 from django import forms
 from tenancy.models import ContactGroup, Contact, Tenant
 from utilities.forms.fields import (
@@ -35,9 +35,19 @@ class WebsiteForm(NetBoxModelForm):
         label ='Hoster',
         required = True
     )
+    developer = DynamicModelChoiceField(
+        queryset = Developer.objects.all(),
+        label ='Developer',
+        required = True
+    )
+    designer = DynamicModelChoiceField(
+        queryset = Designer.objects.all(),
+        label ='Designer',
+        required = True
+    )
     class Meta:
         model = Website
-        fields = ('name', 'url', 'repo', 'status' , 'registrar', 'tenant','hoster', 'contactgroup')
+        fields = ('name', 'url', 'repo', 'status' , 'registrar','hoster','developer', 'designer', 'tenant', 'contactgroup')
 
 class RegistrarForm(NetBoxModelForm):
     contactgroup = DynamicModelChoiceField(
@@ -59,4 +69,26 @@ class HosterForm(NetBoxModelForm):
 
     class Meta:
         model = Hoster
+        fields = ('name', 'contactgroup')
+
+class DesignerForm(NetBoxModelForm):
+    contactgroup = DynamicModelChoiceField(
+        queryset=ContactGroup.objects.all(),
+        label='Contact Group',
+        required=False
+    )
+
+    class Meta:
+        model = Designer
+        fields = ('name', 'contactgroup')
+
+class DeveloperForm(NetBoxModelForm):
+    contactgroup = DynamicModelChoiceField(
+        queryset=ContactGroup.objects.all(),
+        label='Contact Group',
+        required=False
+    )
+
+    class Meta:
+        model = Developer
         fields = ('name', 'contactgroup')

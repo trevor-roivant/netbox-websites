@@ -19,22 +19,7 @@
               <th scope="row">Repo</th>
               <td>{{ object.repo }}</td>
           </tr>
-            <tr>
-              <th scope="row">Registrar</th>
-              <td>                {% if object.registrar %}
-                <a href="{{ object.registrar.get_absolute_url }}">{{ object.registrar }}</a>
-              {% else %}
-                {{ ''|placeholder }}
-              {% endif %}</td>
-
-              <tr>
-                <th scope="row">Hoster</th>
-                <td>                {% if object.hoster %}
-                  <a href="{{ object.hoster.get_absolute_url }}">{{ object.hoster }}</a>
-                {% else %}
-                  {{ ''|placeholder }}
-                {% endif %}</td>
-          </tr>
+          
             <tr>
                 <th scope="row">Status</th>
                 <td>{{ object.get_status_display }}</td>
@@ -44,6 +29,47 @@
         </div>
       </div>
     </div>
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Providers</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Registrar</th>
+              <td>                {% if object.registrar %}
+                <a href="{{ object.registrar.get_absolute_url }}">{{ object.registrar }}</a>
+              {% else %}
+                {{ ''|placeholder }}
+              {% endif %}</td>
+            </tr>
+              <tr>
+                <th scope="row">Hoster</th>
+                <td>                {% if object.hoster %}
+                  <a href="{{ object.hoster.get_absolute_url }}">{{ object.hoster }}</a>
+                {% else %}
+                  {{ ''|placeholder }}
+                {% endif %}</td>
+              </tr>
+              <tr>
+                <th scope="row">Designer</th>
+                <td>                {% if object.designer %}
+                  <a href="{{ object.hoster.get_absolute_url }}">{{ object.designer }}</a>
+                {% else %}
+                  {{ ''|placeholder }}
+                {% endif %}</td>
+              </tr>
+              <tr>
+                <th scope="row">Developer</th>
+                <td>                {% if object.developer %}
+                  <a href="{{ object.hoster.get_absolute_url }}">{{ object.developer }}</a>
+                {% else %}
+                  {{ ''|placeholder }}
+                {% endif %}</td>
+              </tr>
+          </table>
+        </div>
+      
+      </div>
       <div class="col col-md-6">
       <div class="card">
         <h5 class="card-header">Contacts</h5>

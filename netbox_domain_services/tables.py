@@ -1,6 +1,6 @@
 import django_tables2 as tables
 from netbox.tables import NetBoxTable, ChoiceFieldColumn
-from .models import Website, Registrar, Hoster
+from .models import Website, Registrar, Hoster, Designer, Developer
 
 class WebsiteTable(NetBoxTable):
     name = tables.Column(
@@ -27,5 +27,23 @@ class HosterTable(NetBoxTable):
     )
     class Meta(NetBoxTable.Meta):
         model = Hoster
+        fields = ('pk', 'id', 'name')
+        default_columns = ('name',)
+
+class DesignerTable(NetBoxTable):
+    name = tables.Column(
+        linkify=True
+    )
+    class Meta(NetBoxTable.Meta):
+        model = Designer
+        fields = ('pk', 'id', 'name')
+        default_columns = ('name',)
+
+class DeveloperTable(NetBoxTable):
+    name = tables.Column(
+        linkify=True
+    )
+    class Meta(NetBoxTable.Meta):
+        model = Developer
         fields = ('pk', 'id', 'name')
         default_columns = ('name',)

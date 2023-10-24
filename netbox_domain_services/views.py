@@ -47,3 +47,34 @@ class HosterEditView(generic.ObjectEditView):
 
 class HosterDeleteView(generic.ObjectDeleteView):
     queryset = models.Hoster.objects.all()
+
+#Designer
+class DesignerView(generic.ObjectView):
+    queryset = models.Designer.objects.all()
+
+class DesignerListView(generic.ObjectListView):
+    queryset = models.Designer.objects.all()
+    table = tables.DesignerTable
+
+class DesignerEditView(generic.ObjectEditView):
+    queryset = models.Designer.objects.all()
+    form = forms.DesignerForm
+
+class DesignerDeleteView(generic.ObjectDeleteView):
+    queryset = models.Designer.objects.all()
+
+
+#Developer
+class DeveloperView(generic.ObjectView):
+    queryset = models.Developer.objects.all()
+
+class DeveloperListView(generic.ObjectListView):
+    queryset = models.Developer.objects.all()
+    table = tables.DeveloperTable
+
+class DeveloperEditView(generic.ObjectEditView):
+    queryset = models.Developer.objects.all()
+    form = forms.DeveloperForm
+
+class DeveloperDeleteView(generic.ObjectDeleteView):
+    queryset = models.Developer.objects.all()

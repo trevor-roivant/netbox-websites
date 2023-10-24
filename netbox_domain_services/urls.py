@@ -26,6 +26,22 @@ urlpatterns = (
     path('hoster/<int:pk>/delete/', views.HosterDeleteView.as_view(), name='hoster_delete'),
     path('hoster/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='hoster_changelog', kwargs={
         'model': models.Hoster
+    }),
+    path('designer/', views.DesignerListView.as_view(), name='designer_list'),
+    path('designer/add/', views.DesignerEditView.as_view(), name='designer_add'),
+    path('designer/<int:pk>/', views.DesignerView.as_view(), name='designer'),
+    path('designer/<int:pk>/edit/', views.DesignerEditView.as_view(), name='designer_edit'),
+    path('designer/<int:pk>/delete/', views.DesignerDeleteView.as_view(), name='designer_delete'),
+    path('designer/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='designer_changelog', kwargs={
+        'model': models.Designer
+    }),
+    path('developer/', views.DeveloperListView.as_view(), name='developer_list'),
+    path('developer/add/', views.DeveloperEditView.as_view(), name='developer_add'),
+    path('developer/<int:pk>/', views.DeveloperView.as_view(), name='developer'),
+    path('developer/<int:pk>/edit/', views.DeveloperEditView.as_view(), name='developer_edit'),
+    path('developer/<int:pk>/delete/', views.DeveloperDeleteView.as_view(), name='developer_delete'),
+    path('developer/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='developer_changelog', kwargs={
+        'model': models.Developer
     })
     
     

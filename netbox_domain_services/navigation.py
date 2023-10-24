@@ -45,6 +45,34 @@ providers_menu_items =   (
         ),
     ),
     ),
+    PluginMenuItem(
+        link='plugins:netbox_domain_services:designer_list',
+        link_text='Designers',
+        buttons=(
+            PluginMenuButton(
+                link='plugins:netbox_domain_services:designer_add',
+                title='Designers',
+                icon_class='mdi mdi-plus-thick',
+                color=ButtonColorChoices.GREEN,
+
+
+        ),
+    ),
+    ),
+    PluginMenuItem(
+        link='plugins:netbox_domain_services:developer_list',
+        link_text='Developers',
+        buttons=(
+            PluginMenuButton(
+                link='plugins:netbox_domain_services:developer_add',
+                title='Developers',
+                icon_class='mdi mdi-plus-thick',
+                color=ButtonColorChoices.GREEN,
+
+
+        ),
+    ),
+    ),
 )
 
 

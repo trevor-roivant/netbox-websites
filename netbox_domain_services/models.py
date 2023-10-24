@@ -53,6 +53,24 @@ class Website(NetBoxModel):
         blank=True,
         null=True
     )
+
+    designer = models.ForeignKey(
+        help_text='Designer',
+        to='Designer',
+        on_delete=models.PROTECT,
+        related_name="+",
+        blank=True,
+        null=True
+    )
+
+    developer = models.ForeignKey(
+        help_text='Developer',
+        to='Developer',
+        on_delete=models.PROTECT,
+        related_name="+",
+        blank=True,
+        null=True
+    )
     repo = models.CharField(
         max_length=200,
         blank=True
@@ -68,7 +86,9 @@ class Website(NetBoxModel):
         return reverse('plugins:netbox_domain_services:website', args=[self.pk])
     def get_status_color(self):
         return WebsiteStatusChoices.colors.get(self.status)
-
+    def save(self, *args, **kwargs):
+        self.url = self.url.lower()
+        return super(Website, self).save(*args, **kwargs)
 class Registrar(NetBoxModel):
     name = models.CharField(
         max_length=32
@@ -116,3 +136,51 @@ class Hoster(NetBoxModel):
         return self.name
     def get_absolute_url(self):
         return reverse('plugins:netbox_domain_services:hoster', args=[self.pk])
+
+class Designer(NetBoxModel):
+    name = models.CharField(
+        max_length=32
+    )
+    display = models.CharField(
+        max_length=32,
+        blank=True,
+        null=True
+        )
+    contactgroup = models.ForeignKey(
+        help_text='Account Group',
+        to='tenancy.contactgroup',
+        on_delete=models.PROTECT,
+        related_name='+',
+        blank=True,
+        null=True,
+    )
+    class Meta:
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
+    def get_absolute_url(self):
+        return reverse('plugins:netbox_domain_services:designer', args=[self.pk])
+
+class Developer(NetBoxModel):
+    name = models.CharField(
+        max_length=32
+    )
+    display = models.CharField(
+        max_length=32,
+        blank=True,
+        null=True
+        )
+    contactgroup = models.ForeignKey(
+        help_text='Account Group',
+        to='tenancy.contactgroup',
+        on_delete=models.PROTECT,
+        related_name='+',
+        blank=True,
+        null=True,
+    )
+    class Meta:
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
+    def get_absolute_url(self):
+        return reverse('plugins:netbox_domain_services:developer', args=[self.pk])

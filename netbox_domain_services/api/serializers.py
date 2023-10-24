@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from netbox.api.serializers import NetBoxModelSerializer, WritableNestedSerializer
-from ..models import Hoster, Website, Registrar
+from ..models import Hoster, Website, Registrar, Designer, Developer
 
 
 class NestedWebsiteSerializer(WritableNestedSerializer):
@@ -71,3 +71,46 @@ class HosterSerializer(NetBoxModelSerializer):
             'last_updated',
         )
                 
+class NestedDesignerSerializer(WritableNestedSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='plugins-api:netbox_domain_services-api:designer-detail'
+    )
+
+    class Meta:
+        model = Designer
+        fields = ('id', 'url', 'display', 'name')
+
+
+
+class DesignerSerializer(NetBoxModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='plugins-api:netbox_domain_services-api:designer-detail'
+    )
+    class Meta:
+        model = Designer
+        fields = (
+            'id', 'url', 'name', 'contactgroup', 'tags', 'created',
+            'last_updated',
+        )
+
+class NestedDeveloperSerializer(WritableNestedSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='plugins-api:netbox_domain_services-api:developer-detail'
+    )
+
+    class Meta:
+        model = Developer
+        fields = ('id', 'url', 'display', 'name')
+
+
+
+class DeveloperSerializer(NetBoxModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='plugins-api:netbox_domain_services-api:developer-detail'
+    )
+    class Meta:
+        model = Developer
+        fields = (
+            'id', 'url', 'name', 'contactgroup', 'tags', 'created',
+            'last_updated',
+        )               
