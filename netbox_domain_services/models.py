@@ -26,8 +26,8 @@ class Website(NetBoxModel):
     )
     status = models.CharField(
         max_length=50,
-        choices=AccountStatusChoices,
-        default=AccountStatusChoices.STATUS_ACTIVE
+        choices=WebsiteStatusChoices,
+        default=WebsiteStatusChoices.STATUS_ACTIVE
     )
     contactgroup = models.ForeignKey(
         help_text='Account Owner',
@@ -65,7 +65,7 @@ class Website(NetBoxModel):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return reverse('plugins:netbox_websites:website', args=[self.pk])
+        return reverse('plugins:netbox_domain_services:website', args=[self.pk])
     def get_status_color(self):
         return WebsiteStatusChoices.colors.get(self.status)
 
@@ -91,7 +91,7 @@ class Registrar(NetBoxModel):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return reverse('plugins:netbox_websites:registrar', args=[self.pk])
+        return reverse('plugins:netbox_domain_services:registrar', args=[self.pk])
 
 class Hoster(NetBoxModel):
     name = models.CharField(
@@ -115,4 +115,4 @@ class Hoster(NetBoxModel):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return reverse('plugins:netbox_websites:hoster', args=[self.pk])
+        return reverse('plugins:netbox_domain_services:hoster', args=[self.pk])

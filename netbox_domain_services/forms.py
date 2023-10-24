@@ -36,8 +36,8 @@ class WebsiteForm(NetBoxModelForm):
         required = True
     )
     class Meta:
-        model = CloudAccount
-        fields = ('name', 'url', 'status' , 'registrar', 'tenant','hoster', 'contactgroup')
+        model = Website
+        fields = ('name', 'url', 'repo', 'status' , 'registrar', 'tenant','hoster', 'contactgroup')
 
 class RegistrarForm(NetBoxModelForm):
     contactgroup = DynamicModelChoiceField(

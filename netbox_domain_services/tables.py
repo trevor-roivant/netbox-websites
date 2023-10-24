@@ -9,7 +9,7 @@ class WebsiteTable(NetBoxTable):
     status = ChoiceFieldColumn()
     class Meta(NetBoxTable.Meta):
         model = Website
-        fields = ('pk', 'id', 'name','url','hoster', 'tenant','status')
+        fields = ('pk', 'id', 'name','url','repo','hoster', 'tenant','status')
         default_columns = ('name', 'url','tenant','status')
 
 class RegistrarTable(NetBoxTable):
