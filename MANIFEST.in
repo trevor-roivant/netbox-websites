@@ -1,2 +1,2 @@
-recursive-include netbox_websites/templates/netbox_websites *.html
-recursive-include netbox_websites/templates/inc *.html 
+recursive-include netbox_domain_services/templates/netbox_websites *.html
+recursive-include netbox_domain_services/templates/inc *.html 

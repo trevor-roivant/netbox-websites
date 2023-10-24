@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='netbox-domain-services',
-    version='0.1',
+    version='0.2',
     description='An example NetBox plugin',
     install_requires=[],
     packages=find_packages(),
